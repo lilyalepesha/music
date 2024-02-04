@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 /* Document
    ========================================================================== */
@@ -605,7 +606,7 @@ body {
   content: "";
   left: -15%;
   top: 10%;
-  background-color: inherit;
+  background-color: currentColor;
   width: 0.8rem;
   height: 0.8rem;
   border-radius: 50%;
@@ -661,6 +662,14 @@ body {
   margin-top: 6rem;
 }
 
+.record {
+  background-color: #A5B4F7;
+}
+
+.record__container {
+  padding: 10rem 0;
+}
+
 .record__title {
   text-align: center;
   font-size: 2.8rem;
@@ -668,4 +677,116 @@ body {
   background-color: #020202;
   color: white;
   padding: 1.8rem 0;
+  margin-top: 0;
+}
+
+.record__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.record__item-img {
+  position: relative;
+}
+
+.record__item-img {
+  position: relative;
+  display: inline-block;
+}
+
+.record__item-img > img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.record__item-img::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Используйте нужные вам значения RGBA для затемнения */
+  z-index: 1; /* Установите z-index, чтобы псевдоэлемент был выше изображения */
+}
+
+.record__item-img > span {
+  position: absolute;
+  z-index: 10;
+  font-weight: 600;
+  font-size: 2.4rem;
+  color: white;
+  top: 30%;
+  text-align: center;
+  left: 25%;
+  max-width: 18rem;
+}
+
+.record__container {
+  position: relative;
+}
+
+.record__content-slider__buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.record__content-slider__buttons > div {
+  position: absolute;
+  z-index: 15;
+  top: 45%;
+}
+
+.record__content-slider-prev {
+  left: -5%;
+}
+
+.record__content-slider-next {
+  right: -5%;
+}
+
+.footer {
+  padding: 5.7rem 0 4.7rem 0;
+  background: url(/images/footer.png?3c33473872357cbfe973d2416fdc93af) no-repeat;
+  background-size: cover;
+}
+
+.footer__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.footer__content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  row-gap: 1rem;
+}
+
+.footer__content-title {
+  font-size: 3.5rem;
+  font-weight: 400;
+  color: #7D7D7D;
+  letter-spacing: 0.9em;
+}
+
+.footer__content-description {
+  font-size: 1.6rem;
+  color: #7D7D7D;
+  font-weight: 400;
+}
+
+.footer__content-socials {
+  margin-top: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -moz-column-gap: 2rem;
+       column-gap: 2rem;
 }

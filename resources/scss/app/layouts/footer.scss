@@ -1,0 +1,41 @@
+.footer {
+    padding: 5.7rem 0 4.7rem 0;
+    background: url("../../../../public/images/footer.png") no-repeat;
+    background-size: cover;
+}
+
+.footer__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.footer__content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    row-gap: 1rem;
+}
+
+.footer__content-title {
+    font-size: 3.5rem;
+    font-weight: 400;
+    color: $gray;
+    letter-spacing: 0.9em;
+}
+
+.footer__content-description {
+    font-size: 1.6rem;
+    color: $gray;
+    font-weight: 400;
+}
+
+.footer__content-socials {
+    margin-top: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 2rem;
+}
