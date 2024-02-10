@@ -71,16 +71,13 @@ document.addEventListener("DOMContentLoaded", function () {
 __webpack_require__.r(__webpack_exports__);
 window.onload = function () {
   (function () {
-    document.addEventListener('DOMContentLoaded', function () {
-      var buttons = document.querySelectorAll('.catalog__genres-button');
-      buttons.forEach(function (button) {
-        button.addEventListener('click', function (event) {
-          event.preventDefault();
-          buttons.forEach(function (otherButton) {
-            otherButton.classList.remove('active');
-          });
-          button.classList.add('active');
+    document.querySelectorAll('.catalog__genres-button').forEach(function (item) {
+      item.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelectorAll('.catalog__genres-button').forEach(function (button) {
+          button.classList.remove('active');
         });
+        item.classList.add('active');
       });
     });
   })();

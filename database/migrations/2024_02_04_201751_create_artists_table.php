@@ -15,9 +15,16 @@ return new class extends Migration
             $table->id();
             $table->string('name')->nullable();
             $table->string('description');
+            $table->string('image_url')->nullable();
 
-            $table->foreignId('song_id')
-                ->index('song_index')
+            $table->foreignId('album_id')
+                ->index('album_index')
+                ->constrained()
+                ->cascadeOnUpdate()
+                ->cascadeOnDelete();
+
+            $table->foreignId('record_id')
+                ->index('record_index')
                 ->constrained()
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();

@@ -47,7 +47,11 @@
     margin-top: 7.5rem;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    margin-bottom: 5rem;
+    flex-wrap: wrap;
+    row-gap: 5rem;
+    column-gap: 11rem;
+    justify-content: center;
 }
 
 .catalog__item {
@@ -75,7 +79,7 @@
 }
 
 .catalog__content-title {
-    margin: 1.5rem 0 4rem;
+    margin: 1rem 0 4rem;
     font-weight: 600;
     font-size: 1.8rem;
 }
@@ -98,13 +102,14 @@
     position: relative;
     font-weight: 600;
     font-size: 1.3rem;
+    margin-bottom: 2rem;
 }
 
 .catalog__content-genres > div::before {
     position: absolute;
     content: '';
-    left: -15%;
-    top: 10%;
+    left: -1.5rem;
+    top: 20%;
     background-color: currentColor;
     width: 0.8rem;
     height: 0.8rem;
@@ -121,7 +126,6 @@
 }
 
 .discount {
-    position: absolute;
     top: -50%;
     background-color: $coral;
     padding: 0.5rem;
@@ -158,5 +162,26 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 6rem;
 }
+
+.catalog__show-more{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.catalog__content-album {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    row-gap: 0.5rem;
+    font-size: 1.4rem;
+    margin-bottom: 0.8rem;
+}
+
+.catalog__content-album > div {
+    font-weight: bold;
+    color: $orange-red;
+}
+

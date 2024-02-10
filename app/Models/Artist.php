@@ -20,7 +20,7 @@ class Artist extends Model
     /**
      * @return HasMany
      */
-    public function songs(): HasMany
+    public function records(): HasMany
     {
         return $this->hasMany(Song::class, 'id', 'song_id');
     }

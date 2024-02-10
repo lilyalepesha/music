@@ -1,17 +1,13 @@
 window.onload = () => {
     (function() {
-        document.addEventListener('DOMContentLoaded', () => {
-            const buttons = document.querySelectorAll('.catalog__genres-button');
-
-            buttons.forEach(button => {
-                button.addEventListener('click', (event) => {
-                    event.preventDefault();
-                    buttons.forEach(otherButton => {
-                        otherButton.classList.remove('active');
-                    });
-                    button.classList.add('active');
+        document.querySelectorAll('.catalog__genres-button').forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                document.querySelectorAll('.catalog__genres-button').forEach(button => {
+                    button.classList.remove('active');
                 });
+                item.classList.add('active');
             });
         });
     })();
-}
+};

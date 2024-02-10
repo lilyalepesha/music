@@ -23,27 +23,32 @@ class ArtistSeeder extends Seeder
             [
                 'name' => 'Dora',
                 'description' => 1111,
-                'song_id' => 1
+                'record_id' => 1,
+                'album_id' => 1
             ],
             [
                 'name' => 'Morgenstern',
                 'description' => 1111,
-                'song_id' => 1
+                'record_id' => 1,
+                'album_id' => 1
             ],
             [
                 'name' => 'Big baby tape',
                 'description' => 1111,
-                'song_id' => 1
+                'record_id' => 1,
+                'album_id' => 1
             ],
             [
                 'name' => 'Kai angel',
-                'description' => 1111,
-                'song_id' => 1
+                'description' => 'Гений музыки',
+                'record_id' => 3,
+                'album_id' => 1
             ],
             [
                 'name' => '9mice',
                 'description' => 1111,
-                'song_id' => 1
+                'record_id' => 1,
+                'album_id' => 1
             ],
         ]);
     }

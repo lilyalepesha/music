@@ -2,6 +2,8 @@
 
 namespace App\Enums;
 
+use Exception;
+
 enum GenreEnum: string
 {
     case ROCK = 'rock';
@@ -14,8 +16,10 @@ enum GenreEnum: string
 
     case FUNK = 'funk';
     case POP = 'pop';
-    case OPIUM = 'opium';
 
+    /**
+     * @return string
+     */
     public function color(): string
     {
         return match($this) {
@@ -26,5 +30,18 @@ enum GenreEnum: string
             self::POP => 'pink',
             default => 'green',
         };
+     }
+
+    /**
+     * @return string
+     * @throws Exception
+     */
+     public function title(): string
+     {
+         return match ($this) {
+             self::POP => 'POP',
+             self::HIP_HOP => 'Hip-hop',
+             default => throw new Exception('Unexpected match value'),
+         };
      }
 }
