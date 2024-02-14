@@ -9,6 +9,9 @@ document.addEventListener("DOMContentLoaded", () => {
             660: {
                 slidesPerView: 2,
             },
+            320: {
+                slidesPerView: 1,
+            },
             992: {
                 slidesPerView: 3,
             },
@@ -18,7 +21,4 @@ document.addEventListener("DOMContentLoaded", () => {
             prevEl: '.record__content-slider-prev',
         },
     });
-
-    // Log the number of slides after initialization
-    console.log("Number of slides:", swiper.slides.length);
 });

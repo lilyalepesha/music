@@ -10,6 +10,13 @@ class Record extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'discount',
+        'price',
+        'genre_id'
+    ];
+
     /**
      * @return HasMany
      */

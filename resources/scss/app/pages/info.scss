@@ -1,12 +1,23 @@
 .info {
     padding: 4.5rem 0 13rem 0;
 }
+.info__container {
+    @media(max-width: 1000px) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+}
 
 .info__title {
     max-width: 59rem;
     font-weight: 400;
     font-size: 3.6rem;
     line-height: 140%;
+    @media(max-width: 1000px) {
+        text-align: center;
+    }
 }
 
 .info__items {
@@ -14,6 +25,12 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    @media(max-width: 700px) {
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        column-gap: 4rem;
+    }
 }
 
 .info__item {
@@ -21,6 +38,11 @@
     align-items: center;
     justify-content: center;
     column-gap: 2rem;
+}
+
+.info__item-image > svg {
+    width: 12.2rem;
+    height: 12.4rem;
 }
 
 .info__item-content {

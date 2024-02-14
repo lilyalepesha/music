@@ -6,16 +6,15 @@ use Exception;
 
 enum GenreEnum: string
 {
-    case ROCK = 'rock';
-    case ALTERNATIVE_ROCK = 'alternative_rock';
-    case HIP_HOP = 'hip-hop';
-    case PUNK_ROCK = 'lo-fi';
-    case LOUNGE = 'lounge';
-    case JAZZ = 'jazz';
-    case AMBIENT = 'ambient';
-
-    case FUNK = 'funk';
-    case POP = 'pop';
+    case ROCK = 'Rock';
+    case ALTERNATIVE_ROCK = 'Alternative Rock';
+    case HIP_HOP = 'Hip hip';
+    case LOFI = 'Lo-fi';
+    case LOUNGE = 'Lounge';
+    case JAZZ = 'Jazz';
+    case AMBIENT = 'Ambient';
+    case FUNK = 'Funk';
+    case POP = 'Pop';
 
     /**
      * @return string
@@ -25,7 +24,7 @@ enum GenreEnum: string
         return match($this) {
             self::ALTERNATIVE_ROCK => 'coral',
             self::HIP_HOP => 'blue',
-            self::PUNK_ROCK => 'green',
+            self::LOFI => 'green',
             self::FUNK => 'darkblue',
             self::POP => 'pink',
             default => 'green',

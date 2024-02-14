@@ -16,16 +16,10 @@ class GenreSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('genres')->insert([
-            [
-                'title' => GenreEnum::POP->value,
-            ],
-            [
-                'title' => GenreEnum::ALTERNATIVE_ROCK->value,
-            ],
-            [
-                'title' => GenreEnum::HIP_HOP->value,
-            ],
-        ]);
+        foreach (GenreEnum::cases() as $item) {
+            Genre::query()->create([
+               'title' => $item->value
+            ]);
+        }
     }
 }

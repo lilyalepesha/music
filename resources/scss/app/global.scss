@@ -1,12 +1,25 @@
 html {
     scroll-behavior: smooth;
     font-size: 10px;
+    @media(max-width: 1200px) {
+        font-size: 8px;
+    }
+    @media(max-width: 1000px) {
+        font-size: 6px;
+    }
 }
 
 body {
     font-family: 'Montserrat', sans-serif;
     color: $black;
     font-size: 1.6rem;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+footer {
+    margin-top: auto;
 }
 
 .container {
@@ -39,4 +52,47 @@ body {
 
 .blue {
     color: $blue;
+}
+
+.purple-button {
+    outline: none;
+    border: none;
+    border-radius: 1.4rem;
+    background-color: $light-purple;
+    padding: 2rem 3rem;
+    letter-spacing: 0.5rem;
+    color: $white;
+    font-weight: 600;
+}
+.error-validation {
+    padding: 0.5rem 0;
+    max-width: 30rem;
+    text-align: center;
+    line-height: 120%;
+    span {
+        color: $orange-red;
+    }
+}
+
+.alert{
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    padding: 2rem 0;
+    p {
+        color: $white;
+        font-weight: 600;
+        font-size: 1.6rem;
+        text-align: center;
+    }
+}
+
+.danger-alert {
+    background-color: $coral;
+}
+
+.success-alert {
+    background-color: $green;
 }

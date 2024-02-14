@@ -27,27 +27,6 @@ class Catalog extends Component
      */
     public function render(): View|Closure|string
     {
-        $artists = Artist::query()
-            ->selectRaw(
-                'records.name as record_name,
-         artists.name as artist_name,
-         genres.title as genre_title,
-         price,
-         discount,
-         albums.name as album_name'
-            )
-            ->join('albums', 'artists.album_id', '=', 'albums.id')
-            ->join('records', 'record_id', '=', 'records.id')
-            ->join('genres', 'records.genre_id', '=', 'genres.id')
-            ->when(request('genre') !== 'all', function (Builder $query) {
-                $query->where('genres.title', request('genre'));
-            })
-            ->when(
-                !empty(request('show-more')),
-                fn($query) => $query,
-                fn($query) => $query->limit(3)
-            )->get();
-
-        return view('components.catalog', compact('artists'));
+        return view('components.catalog');
     }
 }
