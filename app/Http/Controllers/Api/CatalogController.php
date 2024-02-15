@@ -7,6 +7,7 @@ use App\Models\Artist;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response as ResponseAlias;
 use Throwable;
 
 class CatalogController extends Controller
@@ -25,10 +26,11 @@ class CatalogController extends Controller
                      genres.title as genre_title,
                      price,
                      discount,
-                     albums.name as album_name'
+                     albums.name as album_name,
+                     artists.image_url'
                 )
-                ->join('albums', 'artists.album_id', '=', 'albums.id')
-                ->join('records', 'record_id', '=', 'records.id')
+                ->join('albums', 'artists.id', '=', 'albums.artist_id')
+                ->join('records', 'artists.id', '=', 'records.artist_id')
                 ->join('genres', 'records.genre_id', '=', 'genres.id')
                 ->when(request('genre') !== 'all', function (Builder $query) {
                     $query->where('genres.title', request('genre'));
@@ -41,7 +43,7 @@ class CatalogController extends Controller
 
             return response()->json([
                 'success' => true,
-                'code' => 0,
+                'code' => ResponseAlias::HTTP_OK,
                 'data' => $artists,
             ]);
         } catch (Throwable $e) {
@@ -49,7 +51,7 @@ class CatalogController extends Controller
 
             return response()->json([
                 'success' => true,
-                'code' => 0,
+                'code' => ResponseAlias::HTTP_INTERNAL_SERVER_ERROR,
                 'message' => $e->getMessage() ?? 'Произошла ошибка',
             ]);
         }

@@ -2,46 +2,33 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\RecordResource\Pages;
-use App\Filament\Resources\RecordResource\RelationManagers;
-use App\Models\Record;
-use Filament\Forms;
+use App\Filament\Resources\ArtistResource\Pages;
 use Filament\Forms\Components\Select;
+use App\Models\Artist;
+use Filament\Forms;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class RecordResource extends Resource
+class ArtistResource extends Resource
 {
-    protected static ?string $model = Record::class;
+    protected static ?string $model = Artist::class;
+
+    protected static ?string $inverseRelationship = 'albums';
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    /**
-     * @param Form $form
-     * @return Form
-     */
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 TextInput::make('name')->required(),
-                TextInput::make('discount')->integer()->nullable(),
-                TextInput::make('description'),
-                TextInput::make('price')->integer()->required(),
-                Select::make('genre_id')
-                    ->relationship('genre', 'title')
-                    ->required(),
-                Select::make('artist_id')
-                    ->relationship('artist', 'name')
-                    ->required(),
+                TextInput::make('description')->required(),
                 Forms\Components\FileUpload::make('image_url')
-                    ->directory('records')
+                    ->directory('artists')
                     ->preserveFilenames()
                     ->image()
                     ->imageEditor()
@@ -50,17 +37,12 @@ class RecordResource extends Resource
             ]);
     }
 
-    /**
-     * @param Table $table
-     * @return Table
-     */
     public static function table(Table $table): Table
     {
         return $table
             ->columns([
                 TextColumn::make('name')->searchable(),
-                TextColumn::make('discount'),
-                TextColumn::make('price')->searchable(),
+                TextColumn::make('description'),
                 TextColumn::make('created_at'),
             ])
             ->filters([
@@ -76,9 +58,6 @@ class RecordResource extends Resource
             ]);
     }
 
-    /**
-     * @return string[]
-     */
     public static function getRelations(): array
     {
         return [
@@ -89,9 +68,9 @@ class RecordResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListRecords::route('/'),
-            'create' => Pages\CreateRecord::route('/create'),
-            'edit' => Pages\EditRecord::route('/{record}/edit'),
+            'index' => Pages\ListArtists::route('/'),
+            'create' => Pages\CreateArtist::route('/create'),
+            'edit' => Pages\EditArtist::route('/{record}/edit'),
         ];
     }
 }

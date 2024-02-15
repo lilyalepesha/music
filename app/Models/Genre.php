@@ -5,6 +5,7 @@ namespace App\Models;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Genre extends Model
 {
@@ -31,10 +32,10 @@ class Genre extends Model
     }
 
     /**
-     * @return BelongsToMany
+     * @return HasMany
      */
-    public function record(): BelongsToMany
+    public function records(): HasMany
     {
-        return $this->belongsToMany(Record::class);
+        return $this->hasMany(Record::class);
     }
 }

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Record extends Model
@@ -14,14 +15,25 @@ class Record extends Model
         'name',
         'discount',
         'price',
-        'genre_id'
+        'genre_id',
+        'artist_id',
+        'description',
+        'image_url'
     ];
 
     /**
-     * @return HasMany
+     * @return BelongsTo
      */
-    public function genres(): HasMany
+    public function genre(): BelongsTo
     {
-        return $this->hasMany(Genre::class, 'id', 'genre_id');
+        return $this->belongsTo(Genre::class);
+    }
+
+    /**
+     * @return BelongsTo
+     */
+    public function artist(): BelongsTo
+    {
+        return $this->belongsTo(Artist::class);
     }
 }

@@ -3,12 +3,14 @@
     <div class="record__container container">
         <div class="swiper record__content record__content-slider">
             <div class="swiper-wrapper record__wrapper">
-                <div class="swiper-slide record__content-item record__item">
-                    <div class="record__item-img">
-                        <span>Лучшее из Хип-хопа</span>
-                        <img src="https://cdn.regnum.ru/uploads/pictures/news/2023/08/21/regnum_picture_16926286188581_big.jpg" alt="img">
+                @foreach($records as $record)
+                    <div class="swiper-slide record__content-item record__item">
+                        <div class="record__item-img">
+                            <span>{{ $record?->description }}</span>
+                            <img src="{{ asset('storage/' . $record->image_url) }}" alt="img">
+                        </div>
                     </div>
-                </div>
+                @endforeach
             </div>
         </div>
         <div class="record__content-slider__buttons">

@@ -14,6 +14,13 @@ return new class extends Migration
         Schema::create('albums', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+
+            $table->foreignId('artist_id')
+                ->index('artist_index')
+                ->constrained()
+                ->cascadeOnUpdate()
+                ->cascadeOnDelete();
+
             $table->timestamps();
         });
     }

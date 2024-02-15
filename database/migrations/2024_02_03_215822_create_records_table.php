@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('records', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable();
+            $table->string('description')->nullable();
+            $table->string('image_url')->nullable();
             $table->string('price');
             $table->unsignedBigInteger('discount')->nullable();
 
@@ -22,6 +24,12 @@ return new class extends Migration
                 ->constrained()
                 ->cascadeOnDelete()
                 ->cascadeOnUpdate();
+
+            $table->foreignId('artist_id')
+                ->index('artist_index')
+                ->constrained()
+                ->cascadeOnUpdate()
+                ->cascadeOnDelete();
 
             $table->timestamps();
         });

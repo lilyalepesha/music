@@ -2,9 +2,8 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\UserResource\Pages;
-use App\Models\User;
-use Filament\Forms\Components\FileUpload;
+use App\Filament\Resources\GenreResource\Pages;
+use App\Models\Genre;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -12,26 +11,17 @@ use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
-class UserResource extends Resource
+class GenreResource extends Resource
 {
-    /**
-     * @var string|null
-     */
-    protected static ?string $model = User::class;
+    protected static ?string $model = Genre::class;
 
-    /**
-     * @var string|null
-     */
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                TextInput::make('name')->required(),
-                TextInput::make('email')->email()->unique()->required(),
-                TextInput::make('password')->required(),
-                FileUpload::make('avatar')->avatar(),
+                TextInput::make('title')->required(),
             ]);
     }
 
@@ -39,8 +29,7 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('name')->searchable(),
-                TextColumn::make('email')->searchable(),
+                TextColumn::make('title')->searchable(),
                 TextColumn::make('created_at'),
             ])
             ->filters([
@@ -48,7 +37,6 @@ class UserResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make()
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -67,9 +55,9 @@ class UserResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListUsers::route('/'),
-            'create' => Pages\CreateUser::route('/create'),
-            'edit' => Pages\EditUser::route('/{record}/edit'),
+            'index' => Pages\ListGenres::route('/'),
+            'create' => Pages\CreateGenre::route('/create'),
+            'edit' => Pages\EditGenre::route('/{record}/edit'),
         ];
     }
 }

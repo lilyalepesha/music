@@ -21,7 +21,7 @@
     </div>
     @include('layouts.info')
     <x-catalog />
-    @include('layouts.record')
+    <x-record  />
     @include('layouts.footer')
 </body>
 </html>

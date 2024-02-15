@@ -17,18 +17,6 @@ return new class extends Migration
             $table->string('description');
             $table->string('image_url')->nullable();
 
-            $table->foreignId('album_id')
-                ->index('album_index')
-                ->constrained()
-                ->cascadeOnUpdate()
-                ->cascadeOnDelete();
-
-            $table->foreignId('record_id')
-                ->index('record_index')
-                ->constrained()
-                ->cascadeOnUpdate()
-                ->cascadeOnDelete();
-
             $table->timestamps();
         });
     }

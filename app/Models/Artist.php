@@ -14,22 +14,32 @@ class Artist extends Model
     protected $fillable = [
         'name',
         'description',
-        'song_id'
+        'album_id',
+        'record_id',
+        'image_url'
     ];
-
-    /**
-     * @return HasMany
-     */
-    public function records(): HasMany
-    {
-        return $this->hasMany(Song::class, 'id', 'song_id');
-    }
 
     /**
      * @return HasManyThrough
      */
     public function genres(): HasManyThrough
     {
-        return $this->hasManyThrough(Genre::class, Song::class, 'id', 'id', 'id', 'id');
+        return $this->hasManyThrough(Genre::class, Record::class, 'id', 'id', 'id', 'id');
+    }
+
+    /**
+     * @return HasMany
+     */
+    public function records(): HasMany
+    {
+        return $this->hasMany(Record::class);
+    }
+
+    /**
+     * @return HasMany
+     */
+    public function albums(): HasMany
+    {
+        return $this->hasMany(Album::class);
     }
 }
