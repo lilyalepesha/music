@@ -30,8 +30,8 @@ class UserResource extends Resource
             ->schema([
                 TextInput::make('name')->required(),
                 TextInput::make('email')->email()->unique()->required(),
-                TextInput::make('password')->required(),
-                FileUpload::make('avatar')->avatar(),
+                TextInput::make('password')->required()->minLength(8),
+                FileUpload::make('avatar_url')->directory('avatars')->avatar()->required(),
             ]);
     }
 

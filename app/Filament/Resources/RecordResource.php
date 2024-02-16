@@ -40,6 +40,9 @@ class RecordResource extends Resource
                 Select::make('artist_id')
                     ->relationship('artist', 'name')
                     ->required(),
+                Select::make('album_id')
+                    ->relationship('album', 'name')
+                    ->required(),
                 Forms\Components\FileUpload::make('image_url')
                     ->directory('records')
                     ->preserveFilenames()

@@ -13,7 +13,7 @@ class Record extends Component
      */
     public function __construct()
     {
-        //
+
     }
 
     /**

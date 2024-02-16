@@ -7,7 +7,7 @@
             <p class="hero__description">
                 Онлайн магазин виниловых пластинок, с доставкой прямо к двери создадут у вас дома музыкальную сингулярность!
             </p>
-            <a class="hero__button button-orange">
+            <a class="hero__button button-orange" href="#catalog">
                 Перейти к винилу
             </a>
         </div>

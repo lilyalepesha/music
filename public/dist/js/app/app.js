@@ -23,8 +23,8 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _app_tab_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./app/tab.js */ "./resources/js/app/tab.js");
 /* harmony import */ var _app_swiper_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./app/swiper.js */ "./resources/js/app/swiper.js");
-/* harmony import */ var _app_script_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./app/script.js */ "./resources/js/app/script.js");
-/* harmony import */ var _app_form_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./app/form.js */ "./resources/js/app/form.js");
+/* harmony import */ var _app_burger_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./app/burger.js */ "./resources/js/app/burger.js");
+/* harmony import */ var _app_script_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./app/script.js */ "./resources/js/app/script.js");
 
 
 
@@ -32,77 +32,33 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/app/form.js":
-/*!**********************************!*\
-  !*** ./resources/js/app/form.js ***!
-  \**********************************/
+/***/ "./resources/js/app/burger.js":
+/*!************************************!*\
+  !*** ./resources/js/app/burger.js ***!
+  \************************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
-document.addEventListener("DOMContentLoaded", function () {
-  var form = document.getElementById("myForm");
-  form.addEventListener("submit", function (event) {
-    event.preventDefault(); // Предотвращаем отправку формы
-
-    // Получаем значения полей формы
-    var name = document.getElementById("name").value;
-    var email = document.getElementById("email").value;
-    var topic = document.getElementById("topic").value;
-    var message = document.getElementById("message").value;
-    var answer = document.getElementById("answer").value;
-
-    // Проверка на пустые поля
-    if (!name, !email, !topic, !message, !answer) {
-      alert("Пожалуйста, заполните все поля формы.");
-      return;
+window.onload = function () {
+  (function () {
+    var menu = document.querySelector('.header__nav');
+    var button = document.querySelector('.icon__menu');
+    if (menu && button) {
+      button.addEventListener('click', function () {
+        button.classList.toggle('active');
+        menu.classList.toggle('active');
+        document.body.classList.toggle('lock');
+      });
+      document.querySelectorAll('.header__list-item').forEach(function (item) {
+        item.addEventListener('click', function () {
+          button.classList.remove('active');
+          menu.classList.remove('active');
+          document.body.classList.remove('lock');
+        });
+      });
     }
-
-    // Проверка валидности E-mail с использованием регулярного выражения
-    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      alert("Пожалуйста, введите корректный E-mail адрес.");
-      return;
-    }
-
-    // Создаем объект с данными формы в JSON-формате
-    var formData = {
-      name: name,
-      email: email,
-      topic: topic,
-      message: message,
-      answer: answer
-    };
-
-    // Преобразуем объект в строку JSON и сохраняем в cookie
-    document.cookie = "formData=" + JSON.stringify(formData);
-
-    // Выводим значения полей в диалоговое окно
-    alert(JSON.stringify(formData));
-  });
-
-  // Добавим функционал для отображения данных из cookie при загрузке страницы
-  var savedFormData = getCookie("formData");
-  if (savedFormData) {
-    alert("Значения из cookie: " + savedFormData);
-  }
-
-  // Добавим функционал для очистки cookie при нажатии кнопки "Очистить"
-  form.addEventListener("reset", function () {
-    document.cookie = "formData=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-  });
-
-  // Функция для получения значения cookie по имени
-  function getCookie(name) {
-    var cookies = document.cookie.split("; ");
-    for (var i = 0; i < cookies.length; i++) {
-      var cookie = cookies[i].split("=");
-      if (cookie[0] === name) {
-        return cookie[1];
-      }
-    }
-    return null;
-  }
-});
+  })();
+};
 
 /***/ }),
 
@@ -122,6 +78,7 @@ window.onload = function () {
     var genreButtons = document.querySelectorAll('.catalog__genres-button');
     var showMoreBtn = document.getElementById('show-more-btn');
     var catalogItemsContainer = document.querySelector('.catalog__items');
+    var imgSrc = document.getElementById('image_src').value;
 
     // Функция для установки класса активности на выбранной кнопке жанра
     function setActiveGenreButton(button) {
@@ -130,6 +87,32 @@ window.onload = function () {
       });
       button.classList.add('active');
     }
+
+    // Функция для отправки запроса на сервер при загрузке страницы
+    function loadInitialData() {
+      return _loadInitialData.apply(this, arguments);
+    } // Вызов функции для загрузки данных при загрузке страницы
+    function _loadInitialData() {
+      _loadInitialData = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
+        var genre;
+        return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+          while (1) switch (_context3.prev = _context3.next) {
+            case 0:
+              genre = 'all'; // Любой жанр, который вы хотите отобразить изначально
+              _context3.next = 3;
+              return fetchData({
+                genre: genre,
+                showMore: false
+              });
+            case 3:
+            case "end":
+              return _context3.stop();
+          }
+        }, _callee3);
+      }));
+      return _loadInitialData.apply(this, arguments);
+    }
+    loadInitialData();
     genreButtons.forEach(function (button) {
       button.addEventListener('click', /*#__PURE__*/function () {
         var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(e) {
@@ -190,13 +173,13 @@ window.onload = function () {
       return _fetchData.apply(this, arguments);
     }
     function _fetchData() {
-      _fetchData = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(params) {
+      _fetchData = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(params) {
         var response, data;
-        return _regeneratorRuntime().wrap(function _callee3$(_context3) {
-          while (1) switch (_context3.prev = _context3.next) {
+        return _regeneratorRuntime().wrap(function _callee4$(_context4) {
+          while (1) switch (_context4.prev = _context4.next) {
             case 0:
-              _context3.prev = 0;
-              _context3.next = 3;
+              _context4.prev = 0;
+              _context4.next = 3;
               return fetch('/catalog/api/filter?' + new URLSearchParams(params), {
                 method: 'GET',
                 headers: {
@@ -204,17 +187,17 @@ window.onload = function () {
                 }
               });
             case 3:
-              response = _context3.sent;
+              response = _context4.sent;
               if (response.ok) {
-                _context3.next = 6;
+                _context4.next = 6;
                 break;
               }
               throw new Error('Network response was not ok');
             case 6:
-              _context3.next = 8;
+              _context4.next = 8;
               return response.json();
             case 8:
-              data = _context3.sent;
+              data = _context4.sent;
               if (data.success) {
                 // Очистить текущие элементы в каталоге
                 catalogItemsContainer.innerHTML = '';
@@ -223,23 +206,23 @@ window.onload = function () {
                 data.data.forEach(function (artist) {
                   var catalogItem = document.createElement('div');
                   catalogItem.classList.add('catalog__item');
-                  catalogItem.innerHTML = "\n                        <div class=\"catalog__item-img\">\n                            <img src=\"https://im.kommersant.ru/Issues.photo/NEWS/2023/02/27/KMO_191711_00091_1_t222_155015.jpg\" alt=\"author\">\n                        </div>\n                        <div class=\"catalog__item-content catalog__content\">\n                            <span class=\"catalog__content-author\">".concat(artist.artist_name, "</span>\n                            <h4 class=\"catalog__content-title\">").concat(artist.record_name, "</h4>\n                            <div class=\"catalog__content-wrapper\">\n                                <div class=\"catalog__content-album\">\n                                     <div>\u0416\u0430\u043D\u0440: </div>\n                                     <span>").concat(artist.genre_title, "</span>\n                                    <div class=\"album\">\u0410\u043B\u044C\u0431\u043E\u043C: </div>\n                                    <span>").concat(artist.album_name, "</span>\n                                </div>\n                                <div class=\"catalog__content-cost catalog-cost\">\n                                    <span class=\"discount\">- ").concat(Math.round(artist.discount / artist.price), " %</span>\n                                    <div class=\"catalog-cost-discount\">").concat(artist.price, " BYN</div>\n                                    <div class=\"catalog-cost-original\">").concat(artist.discount, " BYN</div>\n                                </div>\n                            </div>\n                        </div>\n                    ");
+                  catalogItem.innerHTML = "\n                        <div class=\"catalog__item-img\">\n                            <img src=\"".concat(imgSrc + '/' + artist.record_image, "\" alt=\"author\">\n                        </div>\n                        <div class=\"catalog__item-content catalog__content\">\n                            <span class=\"catalog__content-author\">").concat(artist.artist_name, "</span>\n                            <h4 class=\"catalog__content-title\">").concat(artist.record_name, "</h4>\n                            <div class=\"catalog__content-wrapper\">\n                                <div class=\"catalog__content-album\">\n                                     <div>\u0416\u0430\u043D\u0440: </div>\n                                     <span>").concat(artist.genre_title, "</span>\n                                    <div class=\"album\">\u0410\u043B\u044C\u0431\u043E\u043C: </div>\n                                    <span>").concat(artist.album_name, "</span>\n                                </div>\n                                <div class=\"catalog__content-cost catalog-cost\">\n                                    <span class=\"discount\">- ").concat(Math.round(artist.discount / artist.price), " %</span>\n                                    <div class=\"catalog-cost-discount\">").concat(artist.price, " BYN</div>\n                                    <div class=\"catalog-cost-original\">").concat(artist.discount, " BYN</div>\n                                </div>\n                            </div>\n                        </div>\n                    ");
                   catalogItemsContainer.appendChild(catalogItem);
                 });
               } else {
                 console.error('Ошибка при загрузке данных: ' + data.message);
               }
-              _context3.next = 15;
+              _context4.next = 15;
               break;
             case 12:
-              _context3.prev = 12;
-              _context3.t0 = _context3["catch"](0);
-              console.error('Ошибка при загрузке данных:', _context3.t0);
+              _context4.prev = 12;
+              _context4.t0 = _context4["catch"](0);
+              console.error('Ошибка при загрузке данных:', _context4.t0);
             case 15:
             case "end":
-              return _context3.stop();
+              return _context4.stop();
           }
-        }, _callee3, null, [[0, 12]]);
+        }, _callee4, null, [[0, 12]]);
       }));
       return _fetchData.apply(this, arguments);
     }

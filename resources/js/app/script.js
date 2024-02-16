@@ -3,6 +3,7 @@ window.onload = () => {
         const genreButtons = document.querySelectorAll('.catalog__genres-button');
         const showMoreBtn = document.getElementById('show-more-btn');
         const catalogItemsContainer = document.querySelector('.catalog__items');
+        const imgSrc = document.getElementById('image_src').value;
 
         // Функция для установки класса активности на выбранной кнопке жанра
         function setActiveGenreButton(button) {
@@ -11,6 +12,15 @@ window.onload = () => {
             });
             button.classList.add('active');
         }
+
+        // Функция для отправки запроса на сервер при загрузке страницы
+        async function loadInitialData() {
+            const genre = 'all'; // Любой жанр, который вы хотите отобразить изначально
+            await fetchData({ genre, showMore: false }); // Отправить запрос на сервер для первоначальной загрузки
+        }
+
+        // Вызов функции для загрузки данных при загрузке страницы
+        loadInitialData();
 
         genreButtons.forEach(button => {
             button.addEventListener('click', async function (e) {
@@ -22,7 +32,7 @@ window.onload = () => {
                 setActiveGenreButton(button);
 
                 // Отправить запрос на сервер с параметром жанра
-                await fetchData({genre});
+                await fetchData({ genre });
             });
         });
 
@@ -34,7 +44,7 @@ window.onload = () => {
             const genre = document.querySelector('.catalog__genres-button.active')?.value || 'all';
 
             // Отправить запрос на сервер с параметрами "Показать ещё" и жанром
-            await fetchData({showMore, genre});
+            await fetchData({ showMore, genre });
         });
 
         // Функция для отправки запроса на сервер и обновления каталога
@@ -63,7 +73,7 @@ window.onload = () => {
                         catalogItem.classList.add('catalog__item');
                         catalogItem.innerHTML = `
                         <div class="catalog__item-img">
-                            <img src="https://im.kommersant.ru/Issues.photo/NEWS/2023/02/27/KMO_191711_00091_1_t222_155015.jpg" alt="author">
+                            <img src="${imgSrc + '/' + artist.record_image}" alt="author">
                         </div>
                         <div class="catalog__item-content catalog__content">
                             <span class="catalog__content-author">${artist.artist_name}</span>

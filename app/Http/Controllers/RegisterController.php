@@ -21,13 +21,13 @@ class RegisterController extends Controller
 
         Auth::login($user);
 
-        $name = Auth::user()->email . '.' . 'jpg';
+        $name = Str::uuid() . '.' . $request->file('avatar')->extension();
 
-        if (Storage::exists('public/avatar/' . Auth::id())) {
-            Storage::deleteDirectory('public/avatar/' . Auth::id());
-        }
+        Storage::putFileAs( 'public/avatars/', $request->file('avatar'), $name);
 
-        Storage::putFileAs('public/avatar/' . Auth::id(), $request->file('avatar'), $name);
+        $user->update([
+            'avatar_url' => 'avatars/' . $name,
+        ]);
 
         return redirect()->back()->with('success', 'Вы успешно зарегистрированы');
     }

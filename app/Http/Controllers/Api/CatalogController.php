@@ -27,19 +27,20 @@ class CatalogController extends Controller
                      price,
                      discount,
                      albums.name as album_name,
-                     artists.image_url'
+                     records.image_url as record_image'
                 )
                 ->join('albums', 'artists.id', '=', 'albums.artist_id')
                 ->join('records', 'artists.id', '=', 'records.artist_id')
                 ->join('genres', 'records.genre_id', '=', 'genres.id')
-                ->when(request('genre') !== 'all', function (Builder $query) {
+                ->when(\request('genre') !== 'all', function (Builder $query) {
                     $query->where('genres.title', request('genre'));
                 })
                 ->when(
                     !empty(request('showMore')),
                     fn($query) => $query,
                     fn($query) => $query->limit(3)
-                )->get();
+                )
+                ->get();
 
             return response()->json([
                 'success' => true,

@@ -16,6 +16,9 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    &.lock {
+        overflow: hidden;
+    }
 }
 
 footer {
@@ -64,11 +67,15 @@ footer {
     color: $white;
     font-weight: 600;
 }
+
 .error-validation {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
     padding: 0.5rem 0;
-    max-width: 30rem;
     text-align: center;
     line-height: 120%;
+    top: 100%;
     span {
         color: $orange-red;
     }

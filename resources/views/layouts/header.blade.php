@@ -18,14 +18,20 @@
                 </div>
             </section>
         </div>
+
         <div class="header__menu">
+            <button class="icon__menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <nav class="header__nav">
                 <ul class="header__list menu">
                     <li class="header__list-item">
                         <a href="{{ route('main.index') }}" class="header__list-link">Главная</a>
                     </li>
                     <li class="header__list-item">
-                        <a href="#!" class="header__list-link">Пластинки </a>
+                        <a href="#catalog" class="header__list-link">Пластинки </a>
                     </li>
                     <li class="header__list-item">
                         <a href="#!" class="header__list-link">Корзина</a>
@@ -70,7 +76,11 @@
         </div>
         @auth
             <div class="header__avatar">
-                <img src="{{ asset('storage/avatar/' . \Illuminate\Support\Facades\Auth::id() . '/' . auth()->user()->email . '.jpg') }}" alt="Аватар">
+                @if(!\Illuminate\Support\Facades\Storage::exists('avatars/' . auth()->user()->avatar_url))
+                    <img src="{{ asset('storage/' . auth()->user()->avatar_url) }}" alt="avatar">
+                @else
+                    <img src="{{ asset('avatar/default/img.png') }}" alt="default avatar">
+                @endif
             </div>
         @endauth
     </div>

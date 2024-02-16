@@ -1,4 +1,4 @@
-<section class="catalog">
+<section id="catalog" class="catalog">
     <div class="catalog__container container">
         <div class="catalog__title">
             Наш каталог пластинок
@@ -13,6 +13,7 @@
                 <button class="catalog__genres-button" type="button" name="genre" value="jazz">{{ \App\Enums\GenreEnum::JAZZ->value }}</button>
                 <button class="catalog__genres-button" type="button" name="genre" value="ambient">{{ \App\Enums\GenreEnum::AMBIENT->value }}</button>
             </div>
+            <input id="image_src" class="image__src" type="text" hidden name="image_src" value="{{ asset('storage/') }}">
         </form>
         <div class="catalog__items">
 
@@ -23,6 +24,7 @@
             @if(request()->has('genre'))
                 <input type="hidden" name="genre" value="{{ request()->input('genre') }}">
             @endif
+            <input id="image_src" class="image__src" type="text" hidden name="image_src" value="{{ asset('storage/') }}">
         </form>
     </div>
 </section>

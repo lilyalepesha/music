@@ -18,7 +18,8 @@ class Record extends Model
         'genre_id',
         'artist_id',
         'description',
-        'image_url'
+        'image_url',
+        'album_id'
     ];
 
     /**
@@ -27,6 +28,14 @@ class Record extends Model
     public function genre(): BelongsTo
     {
         return $this->belongsTo(Genre::class);
+    }
+
+    /**
+     * @return BelongsTo
+     */
+    public function album(): BelongsTo
+    {
+        return $this->belongsTo(Album::class);
     }
 
     /**

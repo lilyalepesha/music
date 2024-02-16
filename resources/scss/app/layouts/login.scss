@@ -17,11 +17,11 @@
 
 .login__form-input-wrapper {
     position: relative;
-
+    margin-top: 3rem;
     svg {
         position: absolute;
         left: 4%;
-        top: 25%;
+        top: 1.5rem;
         width: 2rem;
         height: 2rem;
     }
@@ -61,4 +61,8 @@
     a {
         color: $light-purple;
     }
+}
+
+.login__form-button {
+    margin-bottom: 3rem;
 }

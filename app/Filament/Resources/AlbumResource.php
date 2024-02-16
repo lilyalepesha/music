@@ -29,6 +29,7 @@ class AlbumResource extends Resource
                 TextInput::make('name')->required(),
                 Select::make('artist_id')
                     ->relationship('artist', 'name')
+                    ->required(),
             ]);
     }
 

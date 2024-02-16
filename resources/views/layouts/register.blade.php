@@ -35,7 +35,7 @@
                             <rect width="24" height="24" fill="white"/>
                         </g>
                     </svg>
-                    <input name="email" class="register__form-input" type="text" required placeholder="Email">
+                    <input  value="{{ old('email') }}" name="email" class="register__form-input" type="text" required placeholder="Email">
 
                     <div class="error-validation">
                         @error('email')
@@ -55,7 +55,7 @@
                             <rect width="24" height="24" fill="white"/>
                         </g>
                     </svg>
-                    <input name="password" class="register__form-input" type="password" required placeholder="Пароль">
+                    <input name="password" value="{{ old('password') }}" class="register__form-input" type="password" required placeholder="Пароль">
 
                     <div class="error-validation">
                         @error('password')
@@ -75,7 +75,7 @@
                             <rect width="24" height="24" fill="white"/>
                         </g>
                     </svg>
-                    <input name="password_confirmation" class="register__form-input" type="password" required placeholder="Подтвердите пароль">
+                    <input name="password_confirmation"  value="{{ old('password_confirmation') }}" class="register__form-input" type="password" required placeholder="Подтвердите пароль">
 
                     <div class="error-validation">
                         @error('password_confirmation')

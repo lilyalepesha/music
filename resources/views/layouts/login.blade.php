@@ -26,7 +26,7 @@
                             <rect width="24" height="24" fill="white"/>
                         </g>
                     </svg>
-                    <input name="email" class="login__form-input" type="text" required placeholder="Email">
+                    <input name="email" value="{{ old('email') }}" class="login__form-input" type="text" required placeholder="Email">
 
                     <div class="error-validation">
                         @error('email')
@@ -43,7 +43,7 @@
                             <rect width="24" height="24" fill="white"/>
                         </g>
                     </svg>
-                    <input name="password" class="login__form-input" type="text" required placeholder="Пароль">
+                    <input name="password" value="{{ old('password') }}"  class="login__form-input" type="password" required placeholder="Пароль">
 
                     <div class="error-validation">
                         @error('password')
@@ -58,8 +58,10 @@
             </label>
             <button class="login__form-button purple-button" type="submit">Войти</button>
         </form>
-        <div class="form__registration">
-            Нет аккаунта? <a href="{{ route('register.index') }}">Зарегистрироваться</a>
-        </div>
+        @guest
+            <div class="form__registration">
+                Нет аккаунта? <a href="{{ route('register.index') }}">Зарегистрироваться</a>
+            </div>
+        @endguest
     </div>
 </section>

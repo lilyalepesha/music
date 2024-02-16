@@ -17,11 +17,11 @@
 
 .register__form-input-wrapper {
     position: relative;
-
+    margin-top: 3rem;
     svg {
         position: absolute;
         left: 4%;
-        top: 25%;
+        top: 1.5rem;
         width: 2rem;
         height: 2rem;
     }
@@ -87,6 +87,8 @@ input[type="file"]::file-selector-button:active {
 }
 
 .register__container > svg {
-    width: 19.6rem;
+    position: relative;
+    z-index: 5;
+    width: 15rem;
     height: 3rem;
 }
