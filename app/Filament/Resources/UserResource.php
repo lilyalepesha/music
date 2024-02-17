@@ -35,6 +35,10 @@ class UserResource extends Resource
             ]);
     }
 
+    /**
+     * @param Table $table
+     * @return Table
+     */
     public static function table(Table $table): Table
     {
         return $table

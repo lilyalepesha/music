@@ -15,12 +15,25 @@ use Filament\Tables\Table;
 
 class ArtistResource extends Resource
 {
+    /**
+     * @var string|null
+     */
     protected static ?string $model = Artist::class;
 
+    /**
+     * @var string|null
+     */
     protected static ?string $inverseRelationship = 'albums';
 
+    /**
+     * @var string|null
+     */
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    /**
+     * @param Form $form
+     * @return Form
+     */
     public static function form(Form $form): Form
     {
         return $form
@@ -37,6 +50,10 @@ class ArtistResource extends Resource
             ]);
     }
 
+    /**
+     * @param Table $table
+     * @return Table
+     */
     public static function table(Table $table): Table
     {
         return $table
