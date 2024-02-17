@@ -20,4 +20,17 @@ class RegisterRequest extends FormRequest
             'avatar' => ['required', 'image', 'mimes:jpeg,png,jpg', 'max:2048']
         ];
     }
+
+    /**
+     * @return string[]
+     */
+    public function attributes(): array
+    {
+        return [
+            'email' => 'Email',
+            'password' => 'Пароль',
+            'password_confirmation' => 'Подтверждение пароля',
+            'avatar' => 'Аватар'
+        ];
+    }
 }

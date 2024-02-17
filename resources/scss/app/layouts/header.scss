@@ -163,3 +163,14 @@
         }
     }
 }
+
+.header__avatar-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.header__avatar-edit {
+    margin-left: 3rem;
+}

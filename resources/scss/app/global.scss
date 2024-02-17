@@ -58,6 +58,7 @@ footer {
 }
 
 .purple-button {
+    margin: 2rem 0 5rem 0;
     outline: none;
     border: none;
     border-radius: 1.4rem;
@@ -71,13 +72,16 @@ footer {
 .error-validation {
     position: absolute;
     bottom: 0;
-    width: 100%;
+    width: 100%;;
     padding: 0.5rem 0;
     text-align: center;
     line-height: 120%;
     top: 100%;
     span {
+        text-align: center;
+        white-space: nowrap;
         color: $orange-red;
+        font-size: 1.2rem;
     }
 }
 

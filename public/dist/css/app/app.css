@@ -385,6 +385,7 @@ footer {
 }
 
 .purple-button {
+  margin: 2rem 0 5rem 0;
   outline: none;
   border: none;
   border-radius: 1.4rem;
@@ -405,7 +406,10 @@ footer {
   top: 100%;
 }
 .error-validation span {
+  text-align: center;
+  white-space: nowrap;
   color: #FF7272;
+  font-size: 1.2rem;
 }
 
 .alert {
@@ -591,6 +595,17 @@ footer {
   .header__list-link:before {
     display: none;
   }
+}
+
+.header__avatar-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.header__avatar-edit {
+  margin-left: 3rem;
 }
 
 .hero__block-wrapper {
@@ -1264,6 +1279,106 @@ input[type=file]::file-selector-button:active {
 }
 
 .register__container > svg {
+  position: relative;
+  z-index: 5;
+  width: 15rem;
+  height: 3rem;
+}
+
+.profile__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  row-gap: 3rem;
+}
+
+.profile__form-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  row-gap: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.profile__form-input-wrapper {
+  position: relative;
+  margin-top: 3rem;
+}
+.profile__form-input-wrapper svg {
+  position: absolute;
+  left: 4%;
+  top: 1.5rem;
+  width: 2rem;
+  height: 2rem;
+}
+
+.profile__form-input {
+  color: white;
+  outline: none;
+  border-radius: 1.5rem;
+  background-color: #A585E9;
+  border: none;
+  padding: 1.5rem 1.5rem 1.5rem 4rem;
+}
+.profile__form-input::-moz-placeholder {
+  color: white;
+  font-size: 1.4rem;
+}
+.profile__form-input::placeholder {
+  color: white;
+  font-size: 1.4rem;
+}
+
+.logo {
+  padding-top: 10rem;
+}
+
+.profile__form__checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  -moz-column-gap: 1rem;
+       column-gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.form__registration {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -moz-column-gap: 1rem;
+       column-gap: 1rem;
+}
+.form__registration a {
+  color: #A585E9;
+}
+
+input[type=file]::file-selector-button {
+  border-radius: 4px;
+  padding: 0 16px;
+  height: 40px;
+  cursor: pointer;
+  color: white;
+  background-color: #A585E9;
+  border: 1px solid rgba(0, 0, 0, 0.16);
+  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.05);
+  margin-right: 16px;
+  transition: background-color 200ms;
+}
+
+/* file upload button hover state */
+input[type=file]::file-selector-button:hover {
+  background-color: #7544dd;
+}
+
+/* file upload button active state */
+input[type=file]::file-selector-button:active {
+  background-color: mediumpurple;
+}
+
+.profile__container > svg {
   position: relative;
   z-index: 5;
   width: 15rem;

@@ -4,8 +4,9 @@ namespace App\Http\Requests;
 
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Hash;
 
-class LoginRequest extends FormRequest
+class UpdateRequest extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.
@@ -15,8 +16,10 @@ class LoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => ['required', 'email'],
-            'password' => ['required', 'min:8']
+            'email' => ['required', 'email', 'max:255'],
+            'password' => ['required', 'confirmed', 'min:8'],
+            'password_confirmation' => ['required', 'min:8'],
+            'avatar' => ['required', 'image', 'mimes:jpeg,png,jpg', 'max:2048']
         ];
     }
 
@@ -28,6 +31,8 @@ class LoginRequest extends FormRequest
         return [
             'email' => 'Email',
             'password' => 'Пароль',
+            'password_confirmation' => 'Подтверждение пароля',
+            'avatar' => 'Аватар'
         ];
     }
 }

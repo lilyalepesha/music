@@ -3,6 +3,7 @@
 
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,4 +26,6 @@ Route::view('/login', 'login.index')->name('login.index');
 Route::get('/logout', LogoutController::class)->name('logout');
 Route::post('/login/store', [LoginController::class, 'store'])->name('login.store');
 
-Route::view('/form', 'form.index');
+Route::patch('/profile/update/{id}', [ProfileController::class, 'update'])->name('profile.update');
+
+Route::view('/profile/{?id}', 'profile')->name('profile.index');
