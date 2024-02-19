@@ -28,4 +28,4 @@ Route::post('/login/store', [LoginController::class, 'store'])->name('login.stor
 
 Route::patch('/profile/update/{id}', [ProfileController::class, 'update'])->name('profile.update');
 
-Route::view('/profile/{?id}', 'profile')->name('profile.index');
+Route::get('/profile/{id}', [ProfileController::class, 'index'])->name('profile.index');

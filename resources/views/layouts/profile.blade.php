@@ -1,6 +1,6 @@
 <section class="profile">
     <div class="profile__container">
-        <form class="profile__form" action="{{ route('profile.update', ['id' => \Illuminate\Support\Facades\Auth::id()]) }}" method="POST" enctype="multipart/form-data">
+        <form class="profile__form" action="{{ route('profile.update', ['id' => $id]) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PATCH')
             <div class="profile__form-wrapper">

@@ -23,8 +23,8 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _app_tab_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./app/tab.js */ "./resources/js/app/tab.js");
 /* harmony import */ var _app_swiper_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./app/swiper.js */ "./resources/js/app/swiper.js");
-/* harmony import */ var _app_burger_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./app/burger.js */ "./resources/js/app/burger.js");
-/* harmony import */ var _app_script_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./app/script.js */ "./resources/js/app/script.js");
+/* harmony import */ var _app_script_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./app/script.js */ "./resources/js/app/script.js");
+/* harmony import */ var _app_burger_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./app/burger.js */ "./resources/js/app/burger.js");
 
 
 
@@ -39,26 +39,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
-window.onload = function () {
-  (function () {
-    var menu = document.querySelector('.header__nav');
-    var button = document.querySelector('.icon__menu');
-    if (menu && button) {
-      button.addEventListener('click', function () {
-        button.classList.toggle('active');
-        menu.classList.toggle('active');
-        document.body.classList.toggle('lock');
-      });
-      document.querySelectorAll('.header__list-item').forEach(function (item) {
-        item.addEventListener('click', function () {
-          button.classList.remove('active');
-          menu.classList.remove('active');
-          document.body.classList.remove('lock');
-        });
-      });
-    }
-  })();
-};
+
 
 /***/ }),
 
@@ -206,7 +187,7 @@ window.onload = function () {
                 data.data.forEach(function (artist) {
                   var catalogItem = document.createElement('div');
                   catalogItem.classList.add('catalog__item');
-                  catalogItem.innerHTML = "\n                        <div class=\"catalog__item-img\">\n                            <img src=\"".concat(imgSrc + '/' + artist.record_image, "\" alt=\"author\">\n                        </div>\n                        <div class=\"catalog__item-content catalog__content\">\n                            <span class=\"catalog__content-author\">").concat(artist.artist_name, "</span>\n                            <h4 class=\"catalog__content-title\">").concat(artist.record_name, "</h4>\n                            <div class=\"catalog__content-wrapper\">\n                                <div class=\"catalog__content-album\">\n                                     <div>\u0416\u0430\u043D\u0440: </div>\n                                     <span>").concat(artist.genre_title, "</span>\n                                    <div class=\"album\">\u0410\u043B\u044C\u0431\u043E\u043C: </div>\n                                    <span>").concat(artist.album_name, "</span>\n                                </div>\n                                <div class=\"catalog__content-cost catalog-cost\">\n                                    <span class=\"discount\">- ").concat(Math.round(artist.discount / artist.price), " %</span>\n                                    <div class=\"catalog-cost-discount\">").concat(artist.price, " BYN</div>\n                                    <div class=\"catalog-cost-original\">").concat(artist.discount, " BYN</div>\n                                </div>\n                            </div>\n                        </div>\n                    ");
+                  catalogItem.innerHTML = "\n                        <div class=\"catalog__item-img\">\n                            <img src=\"".concat(imgSrc + '/' + artist.record_image, "\" alt=\"author\">\n                        </div>\n                        <div class=\"catalog__item-content catalog__content\">\n                            <span class=\"catalog__content-author\">").concat(artist.artist_name, "</span>\n                            <h4 class=\"catalog__content-title\">").concat(artist.record_name, "</h4>\n                            <div class=\"catalog__content-wrapper\">\n                                <div class=\"catalog__content-album\">\n                                     <div>\u0416\u0430\u043D\u0440: </div>\n                                     <span>").concat(artist.genre_title, "</span>\n                                    <div class=\"album\">\u0410\u043B\u044C\u0431\u043E\u043C: </div>\n                                    <span>").concat(artist.album_name, "</span>\n                                </div>\n                                <div class=\"catalog__content-cost catalog-cost\">\n                                    <span class=\"discount\">- ").concat(Math.round(artist.discount * 100 / artist.price), " %</span>\n                                    <div class=\"catalog-cost-discount\">").concat(artist.price, " BYN</div>\n                                    <div class=\"catalog-cost-original\">").concat(artist.discount, " BYN</div>\n                                </div>\n                            </div>\n                        </div>\n                    ");
                   catalogItemsContainer.appendChild(catalogItem);
                 });
               } else {
@@ -225,6 +206,24 @@ window.onload = function () {
         }, _callee4, null, [[0, 12]]);
       }));
       return _fetchData.apply(this, arguments);
+    }
+  })();
+  (function () {
+    var menu = document.querySelector('.header__nav');
+    var button = document.querySelector('.icon__menu');
+    if (menu && button) {
+      button.addEventListener('click', function () {
+        button.classList.toggle('active');
+        menu.classList.toggle('active');
+        document.body.classList.toggle('lock');
+      });
+      document.querySelectorAll('.header__list-item').forEach(function (item) {
+        item.addEventListener('click', function () {
+          button.classList.remove('active');
+          menu.classList.remove('active');
+          document.body.classList.remove('lock');
+        });
+      });
     }
   })();
 };

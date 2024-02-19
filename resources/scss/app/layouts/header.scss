@@ -133,6 +133,7 @@
         display: flex;
         transition: all 0.3s ease-out;
         &.active {
+            z-index: 4;
             left: 0;
         }
     }

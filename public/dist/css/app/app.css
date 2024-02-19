@@ -567,6 +567,7 @@ footer {
     transition: all 0.3s ease-out;
   }
   .header__nav.active {
+    z-index: 4;
     left: 0;
   }
 }
@@ -720,6 +721,7 @@ footer {
   align-items: flex-start;
   justify-content: flex-start;
   flex-direction: column;
+  z-index: 1;
 }
 
 .info__item-content > h3 {
